@@ -1,0 +1,43 @@
+<main>
+    <form ng-controller="AvaliacoesPorTipoCtrl">
+        <div class="box">
+            <div class="form-group">
+                <label for="nome">
+                    Código:
+                </label>
+                <input class="form-control" type="text" name="codEscola" ng-model="codEscola" />
+                <label for="tipo">
+                    Tipo:
+                </label>
+                <input class="form-control" type="text" name="tipo" ng-model="tipo" />
+            </div>
+
+            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="avaliacoesPorTipo(codEscola, tipo)">
+                Listar Avaliações
+            </button>
+        </div>
+
+        <!-- Tabela da Escola -->
+        <div class="box">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Avaliação</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-repeat="avaliacoesPorTipos in avaliacoesPorTipo">
+                        <td scope="row">{{avaliacoesPorTipos.tipoAvaliacao.nome}}</td>
+                        <td scope="row">{{avaliacoesPorTipos.tipoAvaliacao.cod}}</td>
+                        <td scope="row">{{avaliacoesPorTipos.ano}}</td>
+                        <td scope="row">{{avaliacoesPorTipos.valor}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</main>

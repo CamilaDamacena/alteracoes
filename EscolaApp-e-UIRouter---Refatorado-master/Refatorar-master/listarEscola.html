@@ -1,0 +1,57 @@
+<main>
+    <form ng-controller="ListarEscolaCtrl">
+        <!-- Campo do formulário -->
+        <div class="box">
+            <div class="form-group">
+                <label for="quantidade">
+                    Quantidade de Escolas:
+                </label>
+                <select class="form-control" nome="quantidade" ng-model="quantidade" ng-options="quantidade for quantidade in quantidades">
+                    <option value="">Selecione uma quantidade de Escolas</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="listarEscola(quantidade)">
+                Listar
+            </button>
+        </div>
+        <!-- Tabela de Escolas -->
+        <!--  esse codEscola: é referente ao escola.codEscola. -->
+        <div class="box">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Rede</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Detalhar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="escola in escolas">
+                        <td scope="row">{{escola.codEscola}}</td>
+                        <td scope="row">{{escola.nome}}</td>
+                        <td scope="row">{{escola.rede}}</td>
+                        <td scope="row">{{escola.email}}</td>
+                        <td scope="row">{{escola.categoriaEscolaPrivada}}</td>
+                        <td >
+                            <md-button aria-label="Detalhar"
+                              ui-sref="pesquisar({codEscola: escola.codEscola})"
+                              ui-sref-opts="{reload: true}">
+                                <ng-md-icon icon="details" size="18"></ng-md-icon>
+                                <md-tooltip md-direction="bottom">
+                                    Detalhar
+                                </md-tooltip>
+                            </md-button>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+
+
+</main>
